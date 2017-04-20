@@ -27,4 +27,16 @@ public class Zoo {
     public double getZooFunds() {
         return zooFunds;
     }
+
+    public int getEnclosureCount() {
+        return enclosures.size();
+    }
+
+    public void addEnclosure(Enclosure enclosure) {
+        enclosures.add(enclosure);
+    }
+
+    public void removeEnclosure(Enclosure enclosure) {
+        enclosures.remove(enclosure);
+    }
 }

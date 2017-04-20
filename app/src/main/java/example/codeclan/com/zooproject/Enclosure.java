@@ -10,12 +10,13 @@ public class Enclosure {
     private String name;
     private int plotSize;
     private Biome biome;
-    private ArrayList<Animal> Animals;
+    private ArrayList<Animal> animals;
 
     public Enclosure(String name, int plotSize, Biome biome){
         this.name = name;
         this.plotSize = plotSize;
         this.biome = biome;
+        this.animals = new ArrayList<Animal>();
     }
 
     public String getName() {
@@ -28,5 +29,17 @@ public class Enclosure {
 
     public Biome getBiome() {
         return biome;
+    }
+
+    public int getAnimalCount() {
+        return animals.size();
+    }
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
+    }
+
+    public void removeAnimal(Animal animal) {
+        animals.remove(animal);
     }
 }

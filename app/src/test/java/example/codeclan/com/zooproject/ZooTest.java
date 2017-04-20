@@ -12,24 +12,43 @@ import static junit.framework.Assert.assertEquals;
 public class ZooTest {
 
     Zoo zoo;
+    Enclosure enclosure;
 
     @Before
-    public void before(){
+    public void before() {
         zoo = new Zoo("Edinburgh Zoo", 100.00);
+        enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
     }
 
     @Test
-    public void getName(){
+    public void getName() {
         String result = zoo.getName();
         assertEquals("Edinburgh Zoo", result);
     }
 
     @Test
-    public void getZooFunds(){
+    public void getZooFunds() {
         double result = zoo.getZooFunds();
         assertEquals(100.00, result);
-
     }
 
+    @Test
+    public void getEnclosureCount() {
+        int result = zoo.getEnclosureCount();
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void canAddEnclosure() {
+        zoo.addEnclosure(enclosure);
+        assertEquals(1, zoo.getEnclosureCount());
+    }
+
+    @Test
+    public void canRemoveEnclosure() {
+        zoo.addEnclosure(enclosure);
+        zoo.removeEnclosure(enclosure);
+        assertEquals(0, zoo.getEnclosureCount());
+    }
 
 }
