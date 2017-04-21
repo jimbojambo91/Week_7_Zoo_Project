@@ -4,9 +4,9 @@ package example.codeclan.com.zooproject;
  * Created by user on 21/04/2017.
  */
 
-public class Gazelle extends Animal implements Edible{
+public class Lion extends Animal implements Edible {
 
-    public Gazelle(String name, String type, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
+    public Lion(String name, String type, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
         super(name, type, gender, mature, preferredBiome, solitary);
     }
 
@@ -17,5 +17,4 @@ public class Gazelle extends Animal implements Edible{
     public int getNutritionalValue(){
         return 1;
     }
-
 }
