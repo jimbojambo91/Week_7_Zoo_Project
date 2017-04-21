@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * Created by user on 20/04/2017.
  */
 
-public class Animal {
+abstract class Animal implements Edible {
     private String name;
-    private String type;
+    private FoodType foodType;
+    private int nutritionalValue;
     private char gender;
     private ArrayList<Edible> belly;
     private boolean mature;
@@ -17,10 +18,11 @@ public class Animal {
     private int hunger;
     private int happiness;
 
-    public Animal(String name, String type, char gender, boolean mature,
-                  Biome preferredBiome, boolean solitary){
+    public Animal(String name, FoodType foodType, char gender, boolean mature,
+                  Biome preferredBiome, boolean solitary, int nutritionalValue){
         this.name = name;
-        this.type = type;
+        this.foodType = foodType;
+        this.nutritionalValue = nutritionalValue;
         this.gender = gender;
         this.mature = mature;
         this.preferredBiome = preferredBiome;
@@ -31,27 +33,27 @@ public class Animal {
 
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public String getType() {
-        return type;
+    public final FoodType getFoodType() {
+        return foodType;
     }
 
-    public char getGender() {
+    public final char getGender() {
         return gender;
     }
 
-    public boolean getMaturity() {
+    public final boolean getMaturity() {
         return mature;
     }
 
-    public Biome getPreferredBiome() {
+    public final Biome getPreferredBiome() {
         return preferredBiome;
     }
 
-    public boolean getSolitary() {
+    public final boolean getSolitary() {
         return solitary;
     }
 
@@ -59,7 +61,34 @@ public class Animal {
         return hunger;
     }
 
+    public int setHunger(int newHunger) {
+        hunger = newHunger;
+    }
+
     public int getHappiness() {
         return happiness;
     }
+
+    public ArrayList<Edible> getBelly() {
+        return belly;
+    }
+
+    public int bellyCount() {
+        return belly.size();
+    }
+
+    public String getsEaten(){
+        return getName();
+    }
+
+    public int getNutritionalValue(){
+        return nutritionalValue;
+    }
+
+    public void addToHunger(int add){
+        int newHunger = (getHunger() + add);
+        setHunger(newHunger);
+    }
+
+    abstract void eat(Edible edible);
 }

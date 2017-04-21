@@ -38,6 +38,6 @@ public class VisitorTest {
     @Test
     public void getNutritionalValue(){
         int result = visitor.getNutritionalValue();
-        assertEquals(5, result);
+        assertEquals(50, result);
     }
 }

@@ -7,5 +7,8 @@ package example.codeclan.com.zooproject;
 public interface Edible {
 
     int getNutritionalValue();
+    FoodType getFoodType();
     String getsEaten();
+
+
 }

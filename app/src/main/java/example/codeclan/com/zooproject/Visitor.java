@@ -11,12 +11,14 @@ public class Visitor implements Edible{
     private double customerFunds;
     private String favouriteAnimal;
     private int nutritionalValue;
+    private FoodType foodType;
 
     public Visitor(String name, double customerFunds, String favouriteAnimal){
         this.name = name;
         this.customerFunds = customerFunds;
         this.favouriteAnimal = favouriteAnimal;
-        this.nutritionalValue = 5;
+        this.nutritionalValue = 50;
+        this.foodType = FoodType.MEAT;
     }
 
     public String getName() {
@@ -33,6 +35,10 @@ public class Visitor implements Edible{
 
     public String getsEaten(){
         return getName();
+    }
+
+    public final FoodType getFoodType() {
+        return foodType;
     }
 
     public int getNutritionalValue(){

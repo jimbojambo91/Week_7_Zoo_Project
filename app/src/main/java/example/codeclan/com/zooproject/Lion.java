@@ -4,10 +4,10 @@ package example.codeclan.com.zooproject;
  * Created by user on 21/04/2017.
  */
 
-public class Lion extends Animal implements Edible {
+public class Lion extends Carnivore implements Edible {
 
-    public Lion(String name, String type, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
-        super(name, type, gender, mature, preferredBiome, solitary);
+    public Lion(String name, FoodType foodType, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
+        super(name, foodType, gender, mature, preferredBiome, solitary, 10);
     }
 
     public String getsEaten(){

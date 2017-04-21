@@ -12,12 +12,12 @@ import static junit.framework.Assert.assertEquals;
 public class EnclosureTest {
 
     Enclosure enclosure;
-    Animal animal;
+    Lion lion;
 
     @Before
     public void before(){
         enclosure = new Enclosure ("Pride Rock", 100, Biome.SAVANNAH);
-        animal = new Animal("Leo", "Lion", 'M', true, Biome.SAVANNAH, false);
+        lion = new Lion("Leo", FoodType.MEAT, 'M', true, Biome.SAVANNAH, false);
     }
 
     @Test
@@ -46,14 +46,14 @@ public class EnclosureTest {
 
     @Test
     public void canAddAnimal(){
-        enclosure.addAnimal(animal);
+        enclosure.addAnimal(lion);
         assertEquals(1, enclosure.getAnimalCount());
     }
 
     @Test
     public void canRemoveAnimal(){
-        enclosure.addAnimal(animal);
-        enclosure.removeAnimal(animal);
+        enclosure.addAnimal(lion);
+        enclosure.removeAnimal(lion);
         assertEquals(0, enclosure.getAnimalCount());
     }
 }
