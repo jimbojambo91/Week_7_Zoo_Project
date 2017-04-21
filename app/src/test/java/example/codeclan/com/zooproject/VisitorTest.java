@@ -34,4 +34,10 @@ public class VisitorTest {
         String result = visitor.getFavouriteAnimal();
         assertEquals("Lion", result);
     }
+
+    @Test
+    public void getNutritionalValue(){
+        int result = visitor.getNutritionalValue();
+        assertEquals(5, result);
+    }
 }

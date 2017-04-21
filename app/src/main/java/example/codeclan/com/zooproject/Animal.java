@@ -10,6 +10,7 @@ public class Animal {
     private String name;
     private String type;
     private char gender;
+    private ArrayList<Edible> belly;
     private boolean mature;
     private Biome preferredBiome;
     private boolean solitary;
@@ -26,6 +27,7 @@ public class Animal {
         this.solitary = solitary;
         this.hunger = 100;
         this.happiness = 50;
+        this.belly = new ArrayList<Edible>();
 
     }
 
