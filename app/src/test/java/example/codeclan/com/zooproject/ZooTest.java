@@ -51,4 +51,12 @@ public class ZooTest {
         assertEquals(0, zoo.getEnclosureCount());
     }
 
+    @Test
+    public void findEnclosureByName(){
+        zoo.addEnclosure(enclosure);
+        String enclosureName = "Pride Rock";
+        Enclosure result = zoo.findEnclosureByName(enclosureName);
+        assertEquals(enclosure, result);
+    }
+
 }

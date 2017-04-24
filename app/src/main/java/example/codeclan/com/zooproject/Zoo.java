@@ -39,4 +39,14 @@ public class Zoo {
     public void removeEnclosure(Enclosure enclosure) {
         enclosures.remove(enclosure);
     }
+
+
+    public Enclosure findEnclosureByName(String enclosureName) {
+        for(Enclosure enclosure : enclosures){
+            if(enclosure.getName().equals(enclosureName)){
+                return enclosure;
+            }
+        }
+        return null;
+    }
 }

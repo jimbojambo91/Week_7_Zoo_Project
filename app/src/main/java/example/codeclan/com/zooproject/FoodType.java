@@ -8,4 +8,5 @@ public enum FoodType {
     MEAT,
     FISH,
     VEGETATION,
+    TOXIC,
 }

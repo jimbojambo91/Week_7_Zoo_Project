@@ -6,18 +6,8 @@ package example.codeclan.com.zooproject;
 
 public class Gazelle extends Herbivore{
 
-    public Gazelle(String name, FoodType foodType, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
-        super(name, foodType, gender, mature, preferredBiome, solitary, 30);
-    }
-
-
-
-    public String getsEaten(){
-        return "";
-    }
-
-    public int getNutritionalValue(){
-        return 1;
+    public Gazelle(String name, FoodType foodType, char gender, boolean mature, boolean solitary) {
+        super(name, foodType, gender, mature, Biome.SAVANNAH, solitary, 30, 10);
     }
 
 }

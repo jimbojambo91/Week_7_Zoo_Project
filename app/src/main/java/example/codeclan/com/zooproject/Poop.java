@@ -1,17 +1,18 @@
 package example.codeclan.com.zooproject;
 
 /**
- * Created by user on 21/04/2017.
+ * Created by user on 23/04/2017.
  */
 
-public class Grass implements Edible {
+public class Poop implements Edible {
     private FoodType foodType;
     private int nutritionalValue;
 
-    public Grass(){
-        foodType = FoodType.VEGETATION;
-        nutritionalValue = 15;
+    public Poop(){
+        foodType = FoodType.TOXIC;
+        nutritionalValue = -20;
     }
+
     public String getsEaten(){
         return "";
     }
@@ -23,6 +24,4 @@ public class Grass implements Edible {
     public FoodType getFoodType(){
         return foodType;
     }
-
-
 }

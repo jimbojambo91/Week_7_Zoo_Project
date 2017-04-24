@@ -1,9 +1,12 @@
 package example.codeclan.com.zooproject;
 
+import com.google.gson.Gson;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by user on 21/04/2017.
@@ -16,8 +19,8 @@ public class GazelleTest {
 
     @Before
     public void before(){
-        lion = new Lion("Leo", FoodType.MEAT, 'M', true, Biome.SAVANNAH, false);
-        gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, Biome.SAVANNAH, false);
+        lion = new Lion("Leo", FoodType.MEAT, 'M', true, false);
+        gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
         grass = new Grass();
     }
 
@@ -31,6 +34,15 @@ public class GazelleTest {
     public void hasBelly(){
         int result = gazelle.getBelly().size();
         assertEquals(0, result);
+    }
+
+    @Test
+    public void canJsonify() {
+        Gson gson = new Gson();
+        String gazzelleString = gson.toJson(gazelle);
+        assertNotNull(gazzelleString);
+        Gazelle fromJson = gson.fromJson(gazzelleString, Gazelle.class);
+        assertNotNull(fromJson);
     }
 
     @Test
@@ -49,6 +61,13 @@ public class GazelleTest {
     public void gazelleCannotEatLion(){
         gazelle.eat(lion);
         assertEquals(0, gazelle.bellyCount());
+    }
 
+    @Test
+    public void gazelleSleepAndEatTest(){
+        gazelle.sleep();
+        gazelle.eat(grass);
+        int result = gazelle.getHunger();
+        assertEquals(65, result);
     }
 }

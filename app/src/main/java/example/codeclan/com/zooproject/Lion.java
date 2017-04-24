@@ -6,15 +6,8 @@ package example.codeclan.com.zooproject;
 
 public class Lion extends Carnivore implements Edible {
 
-    public Lion(String name, FoodType foodType, char gender, boolean mature, Biome preferredBiome, boolean solitary) {
-        super(name, foodType, gender, mature, preferredBiome, solitary, 10);
+    public Lion(String name, FoodType foodType, char gender, boolean mature, boolean solitary) {
+        super(name, foodType, gender, mature, Biome.SAVANNAH, solitary, 10, 25);
     }
 
-    public String getsEaten(){
-        return "";
-    }
-
-    public int getNutritionalValue(){
-        return 1;
-    }
 }
