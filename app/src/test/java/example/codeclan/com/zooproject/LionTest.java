@@ -15,12 +15,14 @@ public class LionTest {
     Lion lion;
     Gazelle gazelle;
     MeatChunk meat;
+    Enclosure enclosure;
 
     @Before
     public void before(){
         lion = new Lion("Leo", FoodType.MEAT, 'M', true, false);
         gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
         meat = new MeatChunk();
+        enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
     }
 
     @Test
@@ -70,6 +72,12 @@ public class LionTest {
         lion.eat(meat);
         lion.printAnimalLog();
         assertNotNull(lion.getAnimalLog());
+    }
+
+    @Test
+    public void lionWillEatWhenHungry(){
+        enclosure.addAnimal(lion);
+        lion.poop();
     }
 
 

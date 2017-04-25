@@ -154,6 +154,9 @@ public abstract class Animal implements Edible, Serializable {
             newHunger = 100;
         }
         setHunger(newHunger);
+        if(newHunger < 50) {
+            eat(findFood());
+        }
     }
 
     abstract void eat(Edible edible);
@@ -185,5 +188,9 @@ public abstract class Animal implements Edible, Serializable {
 
     public int getPreferredSpace() {
         return preferredSpace;
+    }
+
+    public Edible findFood(){
+            return getAnimalEnclosure().getAvailableFood().get(1);
     }
 }
