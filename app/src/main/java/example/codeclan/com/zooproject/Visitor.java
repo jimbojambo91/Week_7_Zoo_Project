@@ -29,6 +29,7 @@ public class Visitor extends Person{
     }
 
     public String getsEaten(){
+
         return getName();
     }
 }

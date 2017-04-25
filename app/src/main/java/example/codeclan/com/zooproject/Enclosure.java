@@ -39,6 +39,8 @@ public class Enclosure {
         return availableFood;
     }
 
+    public ArrayList<Animal> getAnimals() { return animals; }
+
     public int getAvailableFoodCount(){
         return availableFood.size();
     }

@@ -14,7 +14,7 @@ public class AnimalTest {
 
     @Before
     public void before(){
-        lion = new Lion("Leo", FoodType.MEAT, 'M', true, false);
+        lion = new Lion("Leo", 'M', true, false);
     }
 
     @Test

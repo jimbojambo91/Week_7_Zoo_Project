@@ -14,6 +14,7 @@ public abstract class Person implements Edible {
     private int nutritionalValue;
     private FoodType foodType;
     private int happiness;
+    private ArrayList<String> log;
 
 
 
@@ -26,6 +27,7 @@ public abstract class Person implements Edible {
         this.nutritionalValue = nutritionalValue;
         this.foodType = foodType;
         this.happiness = happiness;
+        this.log = new ArrayList<String>();
     }
 
     public String getName() {
@@ -66,6 +68,17 @@ public abstract class Person implements Edible {
             newHappiness = 100;
         }
         setHappiness(newHappiness);
+    }
+
+    protected void addToLog(String message) {
+        System.out.println(message);
+        this.log.add(message);
+    }
+
+    public void printLog(){
+        for(String event : log){
+            System.out.println(event);
+        }
     }
 
 

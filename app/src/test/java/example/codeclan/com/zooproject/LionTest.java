@@ -19,7 +19,7 @@ public class LionTest {
 
     @Before
     public void before(){
-        lion = new Lion("Leo", FoodType.MEAT, 'M', true, false);
+        lion = new Lion("Leo", 'M', true, false);
         gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
         meat = new MeatChunk();
         enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);

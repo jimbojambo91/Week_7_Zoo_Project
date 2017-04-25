@@ -5,8 +5,11 @@ package example.codeclan.com.zooproject;
  */
 
 public class Herbivore extends Animal {
-    public Herbivore(String name, FoodType foodType, char gender, boolean mature, Biome preferredBiome, boolean solitary, int nutrionalValue, int preferredSpace) {
-        super(name, foodType, gender, mature, preferredBiome, solitary, nutrionalValue, preferredSpace);
+    public Herbivore(String name, FoodType foodType, char gender, boolean mature,
+                     Biome preferredBiome, boolean solitary, int nutrionalValue, int preferredSpace,
+                     Edible preferredFood) {
+        super(name, foodType, gender, mature, preferredBiome, solitary,
+                nutrionalValue, preferredSpace, preferredFood);
     }
 
     public void eat(Edible edible){

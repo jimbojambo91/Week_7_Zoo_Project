@@ -20,7 +20,7 @@ public class EnclosureTest {
     public void before(){
         enclosure = new Enclosure ("Pride Rock", 100, Biome.SAVANNAH);
         smallEnclosure = new Enclosure("Tiny Town", 10, Biome.SAVANNAH);
-        lion = new Lion("Leo", FoodType.MEAT, 'M', true, false);
+        lion = new Lion("Leo", 'M', true, false);
         meat = new MeatChunk();
     }
 
@@ -112,20 +112,20 @@ public class EnclosureTest {
         assertEquals(0, result);
     }
 
-    @Test
-    public void tooMuchPoopMakesAnimalsSad(){
-        enclosure.addAnimal(lion);
-        lion.poop();
-        lion.poop();
-        lion.poop();
-        lion.poop();
-        lion.poop();
-        lion.poop();
-        int poopCount = enclosure.getEnclosureFloor().size();
-        assertEquals(6, poopCount);
-        int result = lion.getHappiness();
-        assertEquals(10, result);
-    }
+//    @Test
+//    public void tooMuchPoopMakesAnimalsSad(){
+//        enclosure.addAnimal(lion);
+//        lion.poop();
+//        lion.poop();
+//        lion.poop();
+//        lion.poop();
+//        lion.poop();
+//        lion.poop();
+//        int poopCount = enclosure.getEnclosureFloor().size();
+//        assertEquals(6, poopCount);
+//        int result = lion.getHappiness();
+//        assertEquals(10, result);
+//    }
 
     @Test
     public void animalsTakeUpSpace(){

@@ -22,9 +22,11 @@ public abstract class Animal implements Edible, Serializable {
     private Enclosure currentEnclosure;
     private ArrayList<String> animalLog;
     private int preferredSpace;
+    private Edible preferredFood;
 
     public Animal(String name, FoodType foodType, char gender, boolean mature,
-                  Biome preferredBiome, boolean solitary, int nutritionalValue, int preferredSpace){
+                  Biome preferredBiome, boolean solitary, int nutritionalValue, int preferredSpace,
+                  Edible preferredFood){
         this.name = name;
         this.foodType = foodType;
         this.nutritionalValue = nutritionalValue;
@@ -37,6 +39,7 @@ public abstract class Animal implements Edible, Serializable {
         this.belly = new ArrayList<Edible>();
         this.animalLog = new ArrayList<String>();
         this.preferredSpace = preferredSpace;
+        this.preferredFood = preferredFood;
 
     }
 
