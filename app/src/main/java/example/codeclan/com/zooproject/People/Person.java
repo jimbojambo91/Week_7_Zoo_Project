@@ -3,7 +3,7 @@ package example.codeclan.com.zooproject.People;
 import java.util.ArrayList;
 
 import example.codeclan.com.zooproject.Edible;
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 25/04/2017.
@@ -82,6 +82,18 @@ public abstract class Person implements Edible {
         for(String event : log){
             System.out.println(event);
         }
+    }
+
+    public void setWallet(double amount){
+        wallet = amount;
+    }
+
+
+
+    public void amendWallet(double amount){
+        double wallet = getWallet();
+        double newWallet = wallet + amount;
+        setWallet(newWallet);
     }
 
 

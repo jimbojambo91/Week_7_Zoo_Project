@@ -42,7 +42,7 @@ public class ZooKeeperTest {
         assertEquals(0, enclosure.getAvailableFoodCount());
         zooKeeper.feed(enclosure);
         assertEquals(1, enclosure.getAvailableFoodCount());
-        String result = enclosure.getAvailableFood().get(1).getsEaten();
+        String result = enclosure.getAvailableFood().get(0).getsEaten();
         assertEquals("a Meat Chunk", result);
 
     }

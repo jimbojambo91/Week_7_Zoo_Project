@@ -1,6 +1,6 @@
 package example.codeclan.com.zooproject.People;
 
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 25/04/2017.
@@ -13,7 +13,5 @@ public abstract class Staff extends Person {
         super(gender, firstName, secondName, wallet, nutritionalValue, foodType, happiness);
     }
 
-    public void getPaid(){
 
-    }
 }

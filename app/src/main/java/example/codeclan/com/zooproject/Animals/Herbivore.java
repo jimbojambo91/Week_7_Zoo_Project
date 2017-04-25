@@ -3,7 +3,7 @@ package example.codeclan.com.zooproject.Animals;
 import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.Food.ZooFood;
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 21/04/2017.
@@ -12,9 +12,9 @@ import example.codeclan.com.zooproject.FoodType;
 public class Herbivore extends Animal {
     public Herbivore(String name, FoodType foodType, char gender, boolean mature,
                      Biome preferredBiome, boolean solitary, int nutrionalValue, int preferredSpace,
-                     ZooFood preferredFood) {
+                     ZooFood preferredFood, int strength) {
         super(name, foodType, gender, mature, preferredBiome, solitary,
-                nutrionalValue, preferredSpace, preferredFood);
+                nutrionalValue, preferredSpace, preferredFood, strength);
     }
 
     public void eat(Edible edible){
@@ -28,5 +28,9 @@ public class Herbivore extends Animal {
             getAnimalLog().add(event);
         }
 
+    }
+
+    public Edible hunt(){
+        return null;
     }
 }

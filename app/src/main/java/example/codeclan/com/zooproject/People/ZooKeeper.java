@@ -1,9 +1,11 @@
 package example.codeclan.com.zooproject.People;
 
 import example.codeclan.com.zooproject.Animals.Animal;
+import example.codeclan.com.zooproject.Edible;
+import example.codeclan.com.zooproject.Food.EdibleFactory;
 import example.codeclan.com.zooproject.Food.ZooFood;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 25/04/2017.
@@ -21,13 +23,17 @@ public class ZooKeeper extends Staff {
         enclosure.getEnclosureFloor().clear();
     }
 
+    public String getClassName(){
+        return "Zoo Keeper";
+    }
+
 
     public void feed(Enclosure enclosure) {
         for(Animal animal : enclosure.getAnimals()){
             ZooFood preferredFood = animal.getPreferredFood();
-            // food = create new instance of that food (make zoo pay for it?)
+            Edible food = EdibleFactory.createEdible(preferredFood);
             enclosure.addFood(food);
         }
-        addToLog("Fed animals in" + enclosure.getName());
+        addToLog( getClassName() + " " + getName() + " added food to " + enclosure.getName());
     }
 }

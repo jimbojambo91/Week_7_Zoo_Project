@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
+import example.codeclan.com.zooproject.Food.FoodType;
+import example.codeclan.com.zooproject.Food.Grass;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;

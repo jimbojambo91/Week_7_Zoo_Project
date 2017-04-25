@@ -2,7 +2,7 @@ package example.codeclan.com.zooproject.People;
 
 import java.util.Random;
 
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 25/04/2017.
@@ -50,6 +50,22 @@ public class PersonFactory {
                 , FoodType.MEAT, 75);
     }
 
+    public static Entertainer getRandomEntertainer() {
+        char gender = randomiser(genders).charAt(0);
+        String firstName = null;
+        if(gender == 'M'){
+            firstName = randomiser(firstNamesMale);
+        }
+        else if(gender == 'F'){
+            firstName = randomiser(firstNamesFemale);
+        }
+        String secondName = randomiser(secondNames);
+        double wallet = Double.parseDouble(randomiser(amounts));
+        String costume = randomiser(entertainerCostumes);
+        return new Entertainer(gender, firstName, secondName, wallet, 50
+                , FoodType.MEAT, 75, costume);
+    }
+
     private static String[] genders = {
             "M", "F"
     };
@@ -61,7 +77,9 @@ public class PersonFactory {
 
     private static String[] firstNamesMale = {
             "James", "Oliver", "Jack", "Harry", "George", "Jacob", "Charlie", "Noah",
-            "William", "Thomas", "Oscar"
+            "William", "Thomas", "Oscar", "Jackson", "Aiden", "Lucas", "Liam", "Bai",
+            "Chanming", "Genghis"
+
     };
 
     private static String[] firstNamesFemale = {
@@ -71,10 +89,14 @@ public class PersonFactory {
 
     private static String[] secondNames = {
             "Duncan", "Smith", "Jones", "Taylor", "Williams", "Brown", "Davies",
-            "Evans", "Wilson", "Thomas", "Roberts"
+            "Evans", "Wilson", "Thomas", "Roberts", "Hu", "Lee", "Sheppard"
     };
 
     private static String[] amounts = {
             "100", "110", "120", "130", "140", "200", "500", "170", "300", "220"
+    };
+
+    private static String[] entertainerCostumes = {
+            "Tiger", "Lion", "Bear", "Elephant", "Crocodile", "Panda"
     };
 }

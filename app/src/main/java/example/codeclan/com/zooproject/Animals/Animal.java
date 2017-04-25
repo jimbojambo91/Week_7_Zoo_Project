@@ -7,7 +7,7 @@ import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.Food.*;
 import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.Poop;
 
 /**
@@ -30,10 +30,11 @@ public abstract class Animal implements Edible, Serializable {
     private ArrayList<String> animalLog;
     private int preferredSpace;
     private ZooFood preferredFood;
+    private int strength;
 
     public Animal(String name, FoodType foodType, char gender, boolean mature,
                   Biome preferredBiome, boolean solitary, int nutritionalValue, int preferredSpace,
-                  ZooFood preferredFood){
+                  ZooFood preferredFood, int strength){
         this.name = name;
         this.foodType = foodType;
         this.nutritionalValue = nutritionalValue;
@@ -47,6 +48,7 @@ public abstract class Animal implements Edible, Serializable {
         this.animalLog = new ArrayList<String>();
         this.preferredSpace = preferredSpace;
         this.preferredFood = preferredFood;
+        this.strength = strength;
 
     }
 
@@ -140,6 +142,11 @@ public abstract class Animal implements Edible, Serializable {
         return animalLog;
     }
 
+    protected void addToAnimalLog(String message) {
+        System.out.println(message);
+        this.animalLog.add(message);
+    }
+
     public void printAnimalLog(){
         for(String event : animalLog){
             System.out.println(event);
@@ -164,10 +171,15 @@ public abstract class Animal implements Edible, Serializable {
             newHunger = 100;
         }
         setHunger(newHunger);
-        if(newHunger < 50) {
+        if(newHunger < 20 && this.getAnimalEnclosure().getAnimalCount() > 1){
+            eat(hunt());
+        }
+        else if(newHunger < 50) {
             eat(findFood());
         }
     }
+
+    abstract Edible hunt();
 
     abstract void eat(Edible edible);
 
@@ -201,10 +213,17 @@ public abstract class Animal implements Edible, Serializable {
     }
 
     public Edible findFood(){
-            return getAnimalEnclosure().getAvailableFood().get(1);
+            if(getAnimalEnclosure().getAvailableFoodCount() <=1){
+                return null;
+            }
+            else return getAnimalEnclosure().getAvailableFood().get(0);
     }
 
     public ZooFood getPreferredFood() {
         return preferredFood;
+    }
+
+    public int getStrength() {
+        return strength;
     }
 }

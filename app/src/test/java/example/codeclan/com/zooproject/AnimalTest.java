@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import example.codeclan.com.zooproject.Animals.Lion;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 import static junit.framework.Assert.assertEquals;
 

@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
+import example.codeclan.com.zooproject.Food.FoodType;
+import example.codeclan.com.zooproject.Food.MeatChunk;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 
 import static junit.framework.Assert.assertEquals;
@@ -82,6 +84,23 @@ public class LionTest {
     public void lionWillEatWhenHungry(){
         enclosure.addAnimal(lion);
         lion.poop();
+    }
+
+    @Test
+    public void lionHasStrength(){
+        int result = lion.getStrength();
+        assertEquals(50, result);
+    }
+
+    @Test
+    public void lionEatsGazelleWhenVeryHungry(){
+        enclosure.addAnimal(gazelle);
+        enclosure.addAnimal(lion);
+        lion.addToHunger(-90);
+        int result = lion.bellyCount();
+        assertEquals(1,result);
+        int count = enclosure.getAnimalCount();
+        assertEquals(1,result);
     }
 
 

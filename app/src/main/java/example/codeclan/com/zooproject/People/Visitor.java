@@ -1,6 +1,6 @@
 package example.codeclan.com.zooproject.People;
 
-import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Food.FoodType;
 
 /**
  * Created by user on 20/04/2017.
