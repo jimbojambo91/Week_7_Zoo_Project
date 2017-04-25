@@ -1,7 +1,13 @@
-package example.codeclan.com.zooproject;
+package example.codeclan.com.zooproject.Animals;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import example.codeclan.com.zooproject.Biome;
+import example.codeclan.com.zooproject.Edible;
+import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.FoodType;
+import example.codeclan.com.zooproject.Poop;
 
 /**
  * Created by user on 20/04/2017.

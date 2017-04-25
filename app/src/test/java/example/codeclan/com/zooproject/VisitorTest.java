@@ -3,8 +3,8 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import example.codeclan.com.zooproject.People.PersonFactory;
+import example.codeclan.com.zooproject.People.Visitor;
 
 import static junit.framework.Assert.assertEquals;
 

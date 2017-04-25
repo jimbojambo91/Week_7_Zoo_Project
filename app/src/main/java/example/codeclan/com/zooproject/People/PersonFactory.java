@@ -1,6 +1,8 @@
-package example.codeclan.com.zooproject;
+package example.codeclan.com.zooproject.People;
 
 import java.util.Random;
+
+import example.codeclan.com.zooproject.FoodType;
 
 /**
  * Created by user on 25/04/2017.

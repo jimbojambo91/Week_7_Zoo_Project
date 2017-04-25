@@ -3,6 +3,9 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.Lion;
+import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+
 import static junit.framework.Assert.assertEquals;
 
 /**

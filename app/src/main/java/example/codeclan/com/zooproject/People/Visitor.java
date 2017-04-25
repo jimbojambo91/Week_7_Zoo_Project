@@ -1,9 +1,6 @@
-package example.codeclan.com.zooproject;
+package example.codeclan.com.zooproject.People;
 
-import android.view.View;
-
-import java.util.ArrayList;
-import java.util.Random;
+import example.codeclan.com.zooproject.FoodType;
 
 /**
  * Created by user on 20/04/2017.

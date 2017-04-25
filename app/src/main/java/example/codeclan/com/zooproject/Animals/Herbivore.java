@@ -1,4 +1,8 @@
-package example.codeclan.com.zooproject;
+package example.codeclan.com.zooproject.Animals;
+
+import example.codeclan.com.zooproject.Biome;
+import example.codeclan.com.zooproject.Edible;
+import example.codeclan.com.zooproject.FoodType;
 
 /**
  * Created by user on 21/04/2017.

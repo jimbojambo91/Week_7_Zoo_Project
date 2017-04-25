@@ -3,6 +3,8 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.Lion;
+
 import static junit.framework.Assert.assertEquals;
 
 /**

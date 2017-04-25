@@ -5,6 +5,9 @@ import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.Gazelle;
+import example.codeclan.com.zooproject.Animals.Lion;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 
