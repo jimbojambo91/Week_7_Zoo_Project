@@ -2,6 +2,7 @@ package example.codeclan.com.zooproject.Animals;
 
 import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.Edible;
+import example.codeclan.com.zooproject.Food.ZooFood;
 import example.codeclan.com.zooproject.FoodType;
 
 /**
@@ -11,7 +12,7 @@ import example.codeclan.com.zooproject.FoodType;
 public class Carnivore extends Animal {
     public Carnivore(String name, FoodType foodType, char gender, boolean mature,
                      Biome preferredBiome, boolean solitary, int nutrionalValue, int preferredSpace,
-                     Edible preferredFood) {
+                     ZooFood preferredFood) {
         super(name, foodType, gender, mature, preferredBiome, solitary, nutrionalValue, preferredSpace,
                 preferredFood);
     }

@@ -1,6 +1,7 @@
 package example.codeclan.com.zooproject.People;
 
 import example.codeclan.com.zooproject.Animals.Animal;
+import example.codeclan.com.zooproject.Food.ZooFood;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.FoodType;
 
@@ -23,7 +24,7 @@ public class ZooKeeper extends Staff {
 
     public void feed(Enclosure enclosure) {
         for(Animal animal : enclosure.getAnimals()){
-            animal.getPreferredFood();
+            ZooFood preferredFood = animal.getPreferredFood();
             // food = create new instance of that food (make zoo pay for it?)
             enclosure.addFood(food);
         }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import example.codeclan.com.zooproject.Biome;
+import example.codeclan.com.zooproject.Food.*;
 import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.FoodType;
@@ -28,11 +29,11 @@ public abstract class Animal implements Edible, Serializable {
     private Enclosure currentEnclosure;
     private ArrayList<String> animalLog;
     private int preferredSpace;
-    private Edible preferredFood;
+    private ZooFood preferredFood;
 
     public Animal(String name, FoodType foodType, char gender, boolean mature,
                   Biome preferredBiome, boolean solitary, int nutritionalValue, int preferredSpace,
-                  Edible preferredFood){
+                  ZooFood preferredFood){
         this.name = name;
         this.foodType = foodType;
         this.nutritionalValue = nutritionalValue;
@@ -201,5 +202,9 @@ public abstract class Animal implements Edible, Serializable {
 
     public Edible findFood(){
             return getAnimalEnclosure().getAvailableFood().get(1);
+    }
+
+    public ZooFood getPreferredFood() {
+        return preferredFood;
     }
 }
