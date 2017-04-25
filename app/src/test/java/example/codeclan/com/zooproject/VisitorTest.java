@@ -14,7 +14,7 @@ public class VisitorTest {
 
     @Before
     public void before(){
-        visitor = new Visitor();
+        visitor = PersonFactory.getRandomVisitor();
     }
 
 //    @Test
