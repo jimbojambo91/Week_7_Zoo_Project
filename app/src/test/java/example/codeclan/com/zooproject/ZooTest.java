@@ -170,11 +170,19 @@ public class ZooTest {
 
     @Test
     public void visitorLogicTest(){
+        zoo.buildNewEnclosure("Pride Rock", 100, Biome.SAVANNAH);
         zoo.update();
         zoo.update();
         zoo.update();
         zoo.update();
         zoo.update();
+    }
+
+    @Test
+    public void zooCanBuildEnclosure(){
+        zoo.buildNewEnclosure("Pride Rock", 100, Biome.SAVANNAH);
+        int result = zoo.getEnclosureCount();
+        assertEquals(1, result);
     }
 
 }

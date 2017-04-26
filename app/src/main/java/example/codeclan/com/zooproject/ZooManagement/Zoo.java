@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
 
+import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.People.Entertainer;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.ShopWorker;
@@ -25,6 +26,7 @@ public class Zoo {
     private HashMap<Staff, Double> salaries;
     private ArrayList<Visitor> entrancePath;
     private ArrayList<Visitor> exitPath;
+    private ArrayList<String> log;
 
     public Zoo(String name, double zooFunds){
         this.name = name;
@@ -35,6 +37,7 @@ public class Zoo {
         this.salaries = new HashMap<Staff, Double>();
         this.entrancePath = new ArrayList<Visitor>();
         this.exitPath = new ArrayList<Visitor>();
+        this.log = new ArrayList<String>();
     }
 
 
@@ -80,6 +83,17 @@ public class Zoo {
 
     public void removeVisitor(Visitor visitor) {
         visitors.remove(visitor);
+    }
+
+    protected void addToLog(String message) {
+        System.out.println(message);
+        this.log.add(message);
+    }
+
+    public void printLog(){
+        for(String event : log){
+            System.out.println(event);
+        }
     }
 
     public void setZooFunds(double amount){
@@ -165,11 +179,21 @@ public class Zoo {
 
     }
 
+    public void buildNewEnclosure(String name, int plotSize, Biome Biome){
+        if(checkAdequateFunds(plotSize*50)){
+            Enclosure enclosure = new Enclosure(name, plotSize, Biome);
+            enclosures.add(enclosure);
+            addZooFunds(enclosure.getBuildPrice());
+            addToLog("Built new Enclosure: " + enclosure.getName());
+        }
+    }
+
     public void buildBurgerShop(String name){
         if(checkAdequateFunds(500)){
             BurgerShop newShop = new BurgerShop(name);
             shops.add(newShop);
             addZooFunds(-500);
+            addToLog("Built new Burger Shop: " + newShop.getName());
         }
     }
 
@@ -178,6 +202,7 @@ public class Zoo {
             SodaShack newShop = new SodaShack(name);
             shops.add(newShop);
             addZooFunds(-500);
+            addToLog("Built new Soda Shack: " + newShop.getName());
         }
     }
 
@@ -189,12 +214,22 @@ public class Zoo {
                 break;
             }
             if (visitor.getHunger() < 20) {
-                visitor.visit(this.getRandomEatable());
-                break;
+                if(checkOpenEatable()){
+                    visitor.visit(this.getRandomEatable());
+                    break;
+                }
+                visitor.addToHappiness(-20);
+                addToLog("Visitors are Hungry!");
+
             }
             if (visitor.getThirst() < 20) {
-                visitor.visit(this.getRandomThirstable());
-                break;
+                if(checkOpenThirstable()){
+                    visitor.visit(this.getRandomThirstable());
+                    break;
+                }
+                visitor.addToHappiness(-20);
+                addToLog("Visitors are Thirsty!");
+
             }
             if(getEnclosureCount() == 0){
                 visitor.leave();
@@ -204,6 +239,26 @@ public class Zoo {
             visitor.visit(this.randomEnclosure());
             break;
         }
+    }
+
+    private boolean checkOpenThirstable() {
+        for(Shop shop : shops){
+            if(shop.getShopTypeString().equals("DRINK") &&
+                    shop.getOpen() == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkOpenEatable() {
+        for(Shop shop : shops){
+            if(shop.getShopTypeString().equals("EAT") &&
+                    shop.getOpen() == true) {
+                    return true;
+            }
+            }
+            return false;
     }
 
     public void updateShops(){
@@ -256,7 +311,7 @@ public class Zoo {
     public Shop getRandomThirstable() {
         ArrayList<Shop> tempArrayList = new ArrayList<Shop>();
         for(Shop shop : shops) {
-            if (shop.getShopTypeString().equals("DRINK")) {
+            if (shop.getShopTypeString().equals("DRINK")){
                 tempArrayList.add(shop);
             }
         }

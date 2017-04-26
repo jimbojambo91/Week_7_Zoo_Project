@@ -20,6 +20,7 @@ public class Enclosure {
     private ArrayList<Edible> availableFood;
     private ArrayList<Poop> enclosureFloor;
     private ArrayList<Person> viewingGallery;
+    private double buildPrice;
 
     public Enclosure(String name, int plotSize, Biome biome){
         this.name = name;
@@ -29,11 +30,16 @@ public class Enclosure {
         this.availableFood = new ArrayList<Edible>();
         this.enclosureFloor = new ArrayList<Poop>();
         this.viewingGallery = new ArrayList<Person>();
+        this.buildPrice = plotSize*50;
 
     }
 
     public String getName() {
         return name;
+    }
+
+    public double getBuildPrice(){
+        return buildPrice;
     }
 
     public int getPlotSize() {

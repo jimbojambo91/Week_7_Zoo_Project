@@ -87,6 +87,10 @@ public abstract class Shop {
     }
 
     abstract void sell(Visitor visitor);
+
+    public boolean getOpen() {
+        return open;
+    }
 }
 
 
