@@ -6,6 +6,7 @@ import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.ZooManagement.Eatable;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.ZooManagement.Sellable;
+import example.codeclan.com.zooproject.ZooManagement.Shop;
 
 /**
  * Created by user on 20/04/2017.
@@ -44,6 +45,11 @@ public class Visitor extends Person{
         enclosure.removeFromViewingGallery(this);
     }
 
+    public void visit(Shop shop){
+        shop.addToQueue(this);
+        addToLog("In Line for " + shop.getName());
+    }
+
     private void watchAnimals(Enclosure enclosure) {
         for(Animal animal : enclosure.getAnimals()){
             addToLog("Seen " + animal.getClass().getSimpleName() + " in " + enclosure.getName());
@@ -68,6 +74,16 @@ public class Visitor extends Person{
 
     public int getHunger() {
         return hunger;
+    }
+
+    public void leave() {
+        if(getWallet() < 10){
+            addToLog("I have no money left. Time to go home.");
+        }
+        if(getHappiness() < 20){
+            addToLog("This zoo is no fun! I'm going home!");
+        }
+
     }
 
 

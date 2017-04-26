@@ -18,8 +18,9 @@ public abstract class Shop {
     private double buildPrice;
     private double stockPrice;
     private ArrayList<String> log;
+    private ShopType shopType;
 
-    public Shop(String name, double buildPrice, double stockPrice){
+    public Shop(String name, double buildPrice, double stockPrice, ShopType shopType){
         this.name = name;
         this.shopFunds = 500;
         this.open = false;
@@ -28,6 +29,7 @@ public abstract class Shop {
         this.buildPrice = buildPrice;
         this.stockPrice = stockPrice;
         this.log = new ArrayList<String>();
+        this.shopType = shopType;
     }
 
     public double getStockPrice() {
@@ -61,6 +63,17 @@ public abstract class Shop {
         }
     }
 
+    public ShopType getShopType(){
+        return shopType;
+    }
+
+    public String getShopTypeString(){
+        return shopType.toString();
+    }
+
+    public String getName() {
+        return name;
+    }
 }
 
 

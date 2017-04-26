@@ -7,6 +7,7 @@ import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.Visitor;
 import example.codeclan.com.zooproject.People.ZooKeeper;
+import example.codeclan.com.zooproject.ZooManagement.BurgerShop;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.ZooManagement.Zoo;
 
@@ -22,6 +23,7 @@ public class ZooTest {
     Enclosure enclosure;
     Visitor visitor;
     Lion lion;
+    BurgerShop burgerShop;
 
     @Before
     public void before() {
@@ -29,6 +31,7 @@ public class ZooTest {
         enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
         visitor = PersonFactory.getRandomVisitor();
         lion = new Lion("Leo", 'M', true, false);
+        burgerShop = new BurgerShop("Bob's Burgers");
     }
 
     @Test
@@ -130,6 +133,24 @@ public class ZooTest {
         zoo.buildBurgerShop("Bob's Burgers 2");
         int result = zoo.getShopCount();
         assertEquals(2, result);
+    }
+
+    @Test
+    public void visitorWillLeaveZooIfNoMoney(){
+        zoo.sellTicket(visitor);
+        visitor.setWallet(5.00);
+        zoo.updateVisitors();
+        int count = zoo.getExitPathCount();
+        assertEquals(1, count);
+    }
+
+    @Test
+    public void visitorWillGoBuyFoodIfHungry(){
+        zoo.buildBurgerShop("Bob's Burgers");
+        zoo.sellTicket(visitor);
+        visitor.addToHunger(-60);
+        zoo.updateVisitors();
+
     }
 
 }

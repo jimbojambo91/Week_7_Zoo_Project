@@ -170,14 +170,19 @@ public class Zoo {
         for (Visitor visitor : visitors) {
             if (visitor.getWallet() < 10 || visitor.getHappiness() < 20) {
                 visitor.leave();
+                exitPath.add(visitor);
+                break;
             }
             if (visitor.getHunger() < 20) {
                 visitor.visit(this.getRandomEatable());
+                break;
             }
             if (visitor.getThirst() < 20) {
                 visitor.visit(this.getRandomThirstable());
+                break;
             }
             visitor.visit(this.randomEnclosure());
+            break;
         }
     }
 
@@ -189,6 +194,51 @@ public class Zoo {
             entrancePath.add(newVisitor);
         }
         else return;
+    }
+
+    public void clearExitingGuests(){
+        exitPath.clear();
+    }
+
+    public void update(){
+        guestCreator();
+        updateVisitors();
+    }
+
+    public Shop getRandomEatable() {
+        ArrayList<Shop> tempArrayList = new ArrayList<Shop>();
+        for(Shop shop : shops){
+            if(shop.getShopTypeString().equals("EAT")){
+                tempArrayList.add(shop);
+            }
+        }
+        Random rand = new Random();
+        int listSize = tempArrayList.size();
+        int index = rand.nextInt(listSize);
+        Shop selectedValue = tempArrayList.get(index);
+        return selectedValue;
+    }
+
+    public Shop getRandomThirstable() {
+        ArrayList<Shop> tempArrayList = new ArrayList<Shop>();
+        for(Shop shop : shops) {
+            if (shop.getShopTypeString().equals("DRINK")) {
+                tempArrayList.add(shop);
+            }
+        }
+        Random rand = new Random();
+        int listSize = tempArrayList.size();
+        int index = rand.nextInt(listSize);
+        Shop selectedValue = tempArrayList.get(index);
+        return selectedValue;
+    }
+
+    public ArrayList<Visitor> getExitPath() {
+        return exitPath;
+    }
+
+    public int getExitPathCount() {
+        return exitPath.size();
     }
 }
 

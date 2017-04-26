@@ -13,7 +13,7 @@ import example.codeclan.com.zooproject.People.Visitor;
 public class BurgerShop extends Shop implements Eatable {
 
     public BurgerShop(String name){
-        super(name, 500, 5.00);
+        super(name, 500, 5.00, ShopType.EAT);
     }
 
     public void sell(Visitor visitor){
