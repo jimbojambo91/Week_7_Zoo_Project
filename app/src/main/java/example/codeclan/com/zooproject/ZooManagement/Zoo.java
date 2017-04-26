@@ -144,6 +144,13 @@ public class Zoo {
 
     }
 
+    public void sellTicket() {
+        Visitor visitor = getFirstInZooQueue();
+        visitor.amendWallet(-15);
+        this.addZooFunds(15);
+        addVisitor(visitor);
+    }
+
     public void sellTicket(Visitor visitor) {
         visitor.amendWallet(-15);
         this.addZooFunds(15);
@@ -166,6 +173,14 @@ public class Zoo {
         }
     }
 
+    public void buildSodaShack(String name){
+        if(checkAdequateFunds(500)){
+            SodaShack newShop = new SodaShack(name);
+            shops.add(newShop);
+            addZooFunds(-500);
+        }
+    }
+
     public void updateVisitors(){
         for (Visitor visitor : visitors) {
             if (visitor.getWallet() < 10 || visitor.getHappiness() < 20) {
@@ -181,8 +196,22 @@ public class Zoo {
                 visitor.visit(this.getRandomThirstable());
                 break;
             }
+            if(getEnclosureCount() == 0){
+                visitor.leave();
+                exitPath.add(visitor);
+                break;
+            }
             visitor.visit(this.randomEnclosure());
             break;
+        }
+    }
+
+    public void updateShops(){
+        for(Shop shop : shops){
+            if(shop.getQueueLength() != 0){
+                shop.sell(shop.getFirstPerson());
+            }
+            else return;
         }
     }
 
@@ -201,7 +230,12 @@ public class Zoo {
     }
 
     public void update(){
+        clearExitingGuests();
         guestCreator();
+        if(checkIfQueue()){
+            sellTicket();
+        }
+        updateShops();
         updateVisitors();
     }
 
@@ -239,6 +273,21 @@ public class Zoo {
 
     public int getExitPathCount() {
         return exitPath.size();
+    }
+
+    public boolean checkIfQueue(){
+        if(entrancePath.size() > 0){
+            return true;
+        }
+        else return false;
+    }
+
+    public Visitor getFirstInZooQueue() {
+        if(checkIfQueue()){
+            return entrancePath.get(0);
+        }
+        return null;
+
     }
 }
 

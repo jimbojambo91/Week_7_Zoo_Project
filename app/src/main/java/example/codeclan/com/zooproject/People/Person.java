@@ -76,6 +76,9 @@ public abstract class Person implements Edible {
         if(newHappiness > 100){
             newHappiness = 100;
         }
+        if(newHappiness < 0){
+            newHappiness = 0;
+        }
         setHappiness(newHappiness);
     }
 

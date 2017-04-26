@@ -150,7 +150,31 @@ public class ZooTest {
         zoo.sellTicket(visitor);
         visitor.addToHunger(-60);
         zoo.updateVisitors();
+    }
 
+    @Test
+    public void visitorWillGoBuyDrinkIfThirsty(){
+        zoo.buildSodaShack("Burpees");
+        zoo.sellTicket(visitor);
+        visitor.addToThirst(-60);
+        zoo.updateVisitors();
+    }
+
+    @Test
+    public void visitorWillVisitEnclosureIfContent(){
+        zoo.addEnclosure(enclosure);
+        zoo.buildSodaShack("Burpees");
+        zoo.sellTicket(visitor);
+        zoo.updateVisitors();
+    }
+
+    @Test
+    public void visitorLogicTest(){
+        zoo.update();
+        zoo.update();
+        zoo.update();
+        zoo.update();
+        zoo.update();
     }
 
 }

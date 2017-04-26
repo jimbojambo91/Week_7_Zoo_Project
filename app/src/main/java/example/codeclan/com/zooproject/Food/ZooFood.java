@@ -10,5 +10,6 @@ public enum ZooFood {
     GRASS,
     FISH,
     BURGER,
+    SODA,
 
 }

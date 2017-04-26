@@ -83,6 +83,10 @@ public class Visitor extends Person{
         if(getHappiness() < 20){
             addToLog("This zoo is no fun! I'm going home!");
         }
+        else {
+            addToHappiness(-100);
+            addToLog(("This zoo has no Enclosures!!! I'm going home!"));
+        }
 
     }
 

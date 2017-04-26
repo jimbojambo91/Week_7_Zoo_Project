@@ -2,6 +2,7 @@ package example.codeclan.com.zooproject.ZooManagement;
 
 import java.util.ArrayList;
 
+import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.People.ShopWorker;
 import example.codeclan.com.zooproject.People.Visitor;
 
@@ -44,6 +45,16 @@ public abstract class Shop {
         shopFunds += amount;
     }
 
+    public ArrayList<Visitor> getQueue() {
+        return queue;
+    }
+
+    public int getQueueLength() {
+        return queue.size();
+    }
+
+    public Visitor getFirstPerson(){ return queue.get(0); }
+
     public void serveFirstPersonInQueue(){
         queue.remove(0);
     }
@@ -74,6 +85,8 @@ public abstract class Shop {
     public String getName() {
         return name;
     }
+
+    abstract void sell(Visitor visitor);
 }
 
 
