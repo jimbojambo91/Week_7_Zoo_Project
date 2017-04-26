@@ -181,6 +181,14 @@ public class Zoo {
         }
     }
 
-    public guestCreator()
+    public void guestCreator(){
+        Random rand = new Random();
+        int index = rand.nextInt(5);
+        if(index == 1){
+            Visitor newVisitor = PersonFactory.getRandomVisitor();
+            entrancePath.add(newVisitor);
+        }
+        else return;
+    }
 }
 
