@@ -50,5 +50,10 @@ public class VisitorTest {
 //            assertEquals('M', result);
 //    }
 
+    @Test
+    public void visitorCanVisit(){
+        visitor.visit(enclosure);
+    }
+
 
 }

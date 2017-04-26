@@ -18,6 +18,11 @@ public class Herbivore extends Animal {
     }
 
     public void eat(Edible edible){
+        if(edible == null){
+            String event = "Animals in " + this.getAnimalEnclosure().getName() + " have no food";
+            addToAnimalLog(event);
+            return;
+        }
         if(edible.getFoodType() == FoodType.VEGETATION){
             getBelly().add(edible);
             addToHunger(edible.getNutritionalValue());

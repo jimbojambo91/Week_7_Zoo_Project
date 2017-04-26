@@ -22,6 +22,7 @@ public class LionTest {
     Gazelle gazelle;
     MeatChunk meat;
     Enclosure enclosure;
+    Enclosure enclosure2;
 
     @Before
     public void before(){
@@ -29,6 +30,7 @@ public class LionTest {
         gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
         meat = new MeatChunk();
         enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
+        enclosure2 = new Enclosure("Arctic Tundra", 100, Biome.ARCTIC);
     }
 
     @Test
@@ -101,6 +103,13 @@ public class LionTest {
         assertEquals(1,result);
         int count = enclosure.getAnimalCount();
         assertEquals(1,result);
+    }
+
+    @Test
+    public void lionGetsUnhappyInWrongBiome(){
+        enclosure2.addAnimal(lion);
+        int result = lion.getHappiness();
+        assertEquals(25, result);
     }
 
 

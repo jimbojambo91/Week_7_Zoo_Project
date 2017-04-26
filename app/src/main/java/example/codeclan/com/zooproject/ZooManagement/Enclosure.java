@@ -58,7 +58,17 @@ public class Enclosure {
         animals.add(animal);
         animal.setEnclosureToAnimal(this);
         checkSpace();
+        checkBiome(animal);
         checkCompatability(animal);
+    }
+
+    private void checkBiome(Animal animal) {
+        if(this.getBiome() != animal.getPreferredBiome()){
+            animal.addToHappiness(-25);
+            System.out.println(animal.getName() + " the " + animal.getClass().getSimpleName() +
+            " is in the wrong Biome! This will lead to unhappiness.");
+        }
+        else return;
     }
 
     private void checkCompatability(Animal animal) {

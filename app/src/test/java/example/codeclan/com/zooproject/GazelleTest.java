@@ -9,6 +9,7 @@ import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.Food.Grass;
+import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -21,12 +22,14 @@ public class GazelleTest {
     Gazelle gazelle;
     Lion lion;
     Grass grass;
+    Enclosure enclosure;
 
     @Before
     public void before(){
         lion = new Lion("Leo", 'M', true, false);
         gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
         grass = new Grass();
+        enclosure = new Enclosure("African Plains", 100, Biome.SAVANNAH);
     }
 
     @Test
@@ -74,5 +77,16 @@ public class GazelleTest {
         gazelle.eat(grass);
         int result = gazelle.getHunger();
         assertEquals(65, result);
+    }
+
+    @Test
+    public void gazelleWontEatLionWhenVeryHungry(){
+        enclosure.addAnimal(gazelle);
+        enclosure.addAnimal(lion);
+        gazelle.addToHunger(-90);
+        int result = gazelle.bellyCount();
+        assertEquals(0,result);
+        int count = enclosure.getAnimalCount();
+        assertEquals(2,count);
     }
 }
