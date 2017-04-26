@@ -66,6 +66,21 @@ public class PersonFactory {
                 , FoodType.MEAT, 75, costume);
     }
 
+    public static ShopWorker getRandomShopWorker() {
+        char gender = randomiser(genders).charAt(0);
+        String firstName = null;
+        if(gender == 'M'){
+            firstName = randomiser(firstNamesMale);
+        }
+        else if(gender == 'F'){
+            firstName = randomiser(firstNamesFemale);
+        }
+        String secondName = randomiser(secondNames);
+        double wallet = Double.parseDouble(randomiser(amounts));
+        return new ShopWorker(gender, firstName, secondName, wallet, 50
+                , FoodType.MEAT, 75);
+    }
+
     private static String[] genders = {
             "M", "F"
     };

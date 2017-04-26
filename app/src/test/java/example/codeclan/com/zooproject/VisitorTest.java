@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.Visitor;
+import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -14,10 +15,12 @@ import static junit.framework.Assert.assertEquals;
 
 public class VisitorTest {
     Visitor visitor;
+    Enclosure enclosure;
 
     @Before
     public void before(){
         visitor = PersonFactory.getRandomVisitor();
+        enclosure = new Enclosure("Lion House", 100, Biome.SAVANNAH);
     }
 
 //    @Test
@@ -53,6 +56,32 @@ public class VisitorTest {
     @Test
     public void visitorCanVisit(){
         visitor.visit(enclosure);
+    }
+
+    @Test
+    public void visitorGetThirst(){
+        int result = visitor.getThirst();
+        assertEquals(75, result);
+    }
+
+    @Test
+    public void canAddToThrist(){
+        visitor.addToThirst(-10);
+        int result = visitor.getThirst();
+        assertEquals(65, result);
+    }
+
+    @Test
+    public void visitorGetHunger(){
+        int result = visitor.getHunger();
+        assertEquals(75, result);
+    }
+
+    @Test
+    public void canAddToHunger(){
+        visitor.addToHunger(-10);
+        int result = visitor.getHunger();
+        assertEquals(65, result);
     }
 
 

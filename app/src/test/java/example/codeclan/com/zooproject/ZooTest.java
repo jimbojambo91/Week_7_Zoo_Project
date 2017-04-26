@@ -3,6 +3,7 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.Visitor;
 import example.codeclan.com.zooproject.People.ZooKeeper;
@@ -20,12 +21,14 @@ public class ZooTest {
     Zoo zoo;
     Enclosure enclosure;
     Visitor visitor;
+    Lion lion;
 
     @Before
     public void before() {
         zoo = new Zoo("Edinburgh Zoo", 10000.00);
         enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
         visitor = PersonFactory.getRandomVisitor();
+        lion = new Lion("Leo", 'M', true, false);
     }
 
     @Test
@@ -104,6 +107,29 @@ public class ZooTest {
         int count = zoo.getVisitorCount();
         assertEquals(1, count);
 
+    }
+
+    @Test
+    public void visitorCanVisitEnclosure(){
+        enclosure.addAnimal(lion);
+        visitor.visit(enclosure);
+    }
+
+    @Test
+    public void zooCanBuildBurgerShop(){
+        zoo.buildBurgerShop("Bob's Burgers");
+        int result = zoo.getShopCount();
+        assertEquals(1, result);
+        double amount = zoo.getZooFunds();
+        assertEquals(9500.00, amount);
+    }
+
+    @Test
+    public void zooCanBuildMultipleShops(){
+        zoo.buildBurgerShop("Bob's Burgers");
+        zoo.buildBurgerShop("Bob's Burgers 2");
+        int result = zoo.getShopCount();
+        assertEquals(2, result);
     }
 
 }

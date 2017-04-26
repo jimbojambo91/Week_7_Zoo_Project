@@ -13,6 +13,7 @@ public class EdibleFactory {
             case("MEATCHUNK"): return new MeatChunk();
             case("GRASS"): return new Grass();
             case("FISH"): return new FishBucket();
+            case("BURGER"): return new Burger();
         }
         return null;
 

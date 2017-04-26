@@ -2,10 +2,12 @@ package example.codeclan.com.zooproject.ZooManagement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Set;
 
 import example.codeclan.com.zooproject.People.Entertainer;
 import example.codeclan.com.zooproject.People.PersonFactory;
+import example.codeclan.com.zooproject.People.ShopWorker;
 import example.codeclan.com.zooproject.People.Staff;
 import example.codeclan.com.zooproject.People.Visitor;
 import example.codeclan.com.zooproject.People.ZooKeeper;
@@ -17,16 +19,22 @@ import example.codeclan.com.zooproject.People.ZooKeeper;
 public class Zoo {
     private String name;
     private ArrayList<Enclosure> enclosures;
+    private ArrayList<Shop> shops;
     private double zooFunds;
     private ArrayList<Visitor> visitors;
     private HashMap<Staff, Double> salaries;
+    private ArrayList<Visitor> entrancePath;
+    private ArrayList<Visitor> exitPath;
 
     public Zoo(String name, double zooFunds){
         this.name = name;
         this.enclosures = new ArrayList<Enclosure>();
+        this.shops = new ArrayList<Shop>();
         this.zooFunds = zooFunds;
         this.visitors = new ArrayList<Visitor>();
         this.salaries = new HashMap<Staff, Double>();
+        this.entrancePath = new ArrayList<Visitor>();
+        this.exitPath = new ArrayList<Visitor>();
     }
 
 
@@ -50,6 +58,18 @@ public class Zoo {
         enclosures.remove(enclosure);
     }
 
+    public int getShopCount() {
+        return shops.size();
+    }
+
+    public void addShop(Shop shop) {
+        shops.add(shop);
+    }
+
+    public void removeShop(Shop shop) {
+        shops.remove(shop);
+    }
+
     public int getVisitorCount() {
         return visitors.size();
     }
@@ -66,10 +86,8 @@ public class Zoo {
         zooFunds = amount;
     }
 
-    public void amendZooFunds(double amount){
-        double zf = getZooFunds();
-        double newZooFunds = zf + amount;
-        setZooFunds(newZooFunds);
+    public void addZooFunds(double amount){
+        zooFunds += amount;
     }
 
 
@@ -100,12 +118,17 @@ public class Zoo {
         addToSalaries(entertainer, 100.00);
     }
 
+    public void hireShopWorker() {
+        ShopWorker shopWorker = PersonFactory.getRandomShopWorker();
+        addToSalaries(shopWorker, 100.00);
+    }
+
     public void payStaff() {
         Set<Staff> keys = salaries.keySet();
         for(Staff key : keys ){
             double salary = salaries.get(key);
             key.amendWallet(salary);
-            this.amendZooFunds(-salary);
+            this.addZooFunds(-salary);
         }
     }
 
@@ -113,11 +136,51 @@ public class Zoo {
         salaries.remove(staff);
     }
 
-    public void sellTicket(Visitor visitor) {
-        visitor.amendWallet(-15);
-        this.amendZooFunds(15);
-        addVisitor(visitor);
+    public Enclosure randomEnclosure(){
+        Random rand = new Random();
+        int listSize = enclosures.size();
+        int index = rand.nextInt(listSize);
+        return enclosures.get(index);
 
     }
+
+    public void sellTicket(Visitor visitor) {
+        visitor.amendWallet(-15);
+        this.addZooFunds(15);
+        addVisitor(visitor);
+    }
+
+    public boolean checkAdequateFunds(double price){
+        if( zooFunds > price){
+            return true;
+        }
+        else return false;
+
+    }
+
+    public void buildBurgerShop(String name){
+        if(checkAdequateFunds(500)){
+            BurgerShop newShop = new BurgerShop(name);
+            shops.add(newShop);
+            addZooFunds(-500);
+        }
+    }
+
+    public void updateVisitors(){
+        for (Visitor visitor : visitors) {
+            if (visitor.getWallet() < 10 || visitor.getHappiness() < 20) {
+                visitor.leave();
+            }
+            if (visitor.getHunger() < 20) {
+                visitor.visit(this.getRandomEatable());
+            }
+            if (visitor.getThirst() < 20) {
+                visitor.visit(this.getRandomThirstable());
+            }
+            visitor.visit(this.randomEnclosure());
+        }
+    }
+
+    public guestCreator()
 }
 

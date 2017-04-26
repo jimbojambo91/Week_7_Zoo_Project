@@ -9,5 +9,6 @@ public enum ZooFood {
     MEATCHUNK,
     GRASS,
     FISH,
+    BURGER,
 
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import example.codeclan.com.zooproject.Animals.Animal;
 import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.Edible;
+import example.codeclan.com.zooproject.People.Person;
 import example.codeclan.com.zooproject.Poop;
 
 /**
@@ -18,6 +19,7 @@ public class Enclosure {
     private ArrayList<Animal> animals;
     private ArrayList<Edible> availableFood;
     private ArrayList<Poop> enclosureFloor;
+    private ArrayList<Person> viewingGallery;
 
     public Enclosure(String name, int plotSize, Biome biome){
         this.name = name;
@@ -26,6 +28,8 @@ public class Enclosure {
         this.animals = new ArrayList<Animal>();
         this.availableFood = new ArrayList<Edible>();
         this.enclosureFloor = new ArrayList<Poop>();
+        this.viewingGallery = new ArrayList<Person>();
+
     }
 
     public String getName() {
@@ -128,5 +132,15 @@ public class Enclosure {
                     " moving an animal or expanding Enclosure. ");
 
         }
+    }
+
+    public ArrayList<Person> getViewingGallery() { return viewingGallery; }
+
+    public void addToViewingGallery(Person person){
+        viewingGallery.add(person);
+    }
+
+    public void removeFromViewingGallery(Person person){
+        viewingGallery.remove(person);
     }
 }

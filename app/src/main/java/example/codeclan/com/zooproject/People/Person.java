@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.Food.FoodType;
+import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.ZooManagement.Sellable;
 
 /**
  * Created by user on 25/04/2017.
@@ -18,6 +20,8 @@ public abstract class Person implements Edible {
     private FoodType foodType;
     private int happiness;
     private ArrayList<String> log;
+    private ArrayList<Edible> belly;
+    private ArrayList<Sellable> items;
 
 
 
@@ -31,6 +35,8 @@ public abstract class Person implements Edible {
         this.foodType = foodType;
         this.happiness = happiness;
         this.log = new ArrayList<String>();
+        this.belly = new ArrayList<Edible>();
+        this.items = new ArrayList<Sellable>();
     }
 
     public String getName() {
@@ -97,7 +103,17 @@ public abstract class Person implements Edible {
     }
 
 
+    public void visit(Enclosure enclosure) {
 
+    }
+
+    public ArrayList<Sellable> getItems() {
+        return items;
+    }
+
+    public void addToItems(Sellable sellable) {
+        items.add(sellable);
+    }
 }
 
 
