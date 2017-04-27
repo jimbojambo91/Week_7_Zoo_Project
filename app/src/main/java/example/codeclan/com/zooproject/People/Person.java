@@ -117,7 +117,6 @@ public abstract class Person implements Edible {
     public void addToItems(Sellable sellable) {
         items.add(sellable);
     }
-
 }
 
 
