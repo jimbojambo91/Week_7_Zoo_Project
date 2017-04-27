@@ -12,9 +12,9 @@ import example.codeclan.com.zooproject.Food.FoodType;
 public class Herbivore extends Animal {
     public Herbivore(String name, FoodType foodType, char gender, boolean mature,
                      Biome preferredBiome, boolean solitary, int nutrionalValue, int preferredSpace,
-                     ZooFood preferredFood, int strength) {
+                     ZooFood preferredFood, int strength, double price) {
         super(name, foodType, gender, mature, preferredBiome, solitary,
-                nutrionalValue, preferredSpace, preferredFood, strength);
+                nutrionalValue, preferredSpace, preferredFood, strength, price);
     }
 
     public void eat(Edible edible){

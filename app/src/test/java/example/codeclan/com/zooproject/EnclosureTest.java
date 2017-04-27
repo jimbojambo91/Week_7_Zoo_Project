@@ -3,9 +3,11 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.AnimalFactory;
 import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.Food.MeatChunk;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.ZooManagement.ZooAnimals;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -24,7 +26,7 @@ public class EnclosureTest {
     public void before(){
         enclosure = new Enclosure ("Pride Rock", 100, Biome.SAVANNAH);
         smallEnclosure = new Enclosure("Tiny Town", 10, Biome.SAVANNAH);
-        lion = new Lion("Leo", 'M', true, false);
+        lion = (Lion) AnimalFactory.CreateAnimal(ZooAnimals.LION, "Leo", 'M', true, 500 );
         meat = new MeatChunk();
     }
 

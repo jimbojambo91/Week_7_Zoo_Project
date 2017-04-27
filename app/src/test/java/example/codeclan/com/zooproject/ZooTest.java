@@ -3,6 +3,8 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.AnimalFactory;
+import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.Visitor;
@@ -10,6 +12,7 @@ import example.codeclan.com.zooproject.People.ZooKeeper;
 import example.codeclan.com.zooproject.ZooManagement.BurgerShop;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.ZooManagement.Zoo;
+import example.codeclan.com.zooproject.ZooManagement.ZooAnimals;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -30,7 +33,7 @@ public class ZooTest {
         zoo = new Zoo("Edinburgh Zoo", 10000.00);
         enclosure = new Enclosure("Pride Rock", 100, Biome.SAVANNAH);
         visitor = PersonFactory.getRandomVisitor();
-        lion = new Lion("Leo", 'M', true, false);
+        lion = (Lion) AnimalFactory.CreateAnimal(ZooAnimals.LION, "Leo", 'M', true, 500 );
         burgerShop = new BurgerShop("Bob's Burgers");
     }
 
@@ -184,5 +187,45 @@ public class ZooTest {
         int result = zoo.getEnclosureCount();
         assertEquals(1, result);
     }
+
+    @Test
+    public void zooCanBuyLion(){
+        zoo.buyMale(ZooAnimals.LION);
+        int count = zoo.getTemporaryStorage().size();
+        assertEquals(1,count);
+    }
+
+    @Test
+    public void getEnclosureByNameTest(){
+        zoo.buildNewEnclosure("check", 100, Biome.SAVANNAH);
+        Enclosure testEnclosure = zoo.getEnclosureByName("check");
+        String name = testEnclosure.getName();
+        assertEquals("check", name);
+
+    }
+
+
+
+
+    @Test
+    public void canAddToNamedEnclosure(){
+        zoo.buildNewEnclosure("Pride Rock", 100, Biome.SAVANNAH);
+        zoo.buyMale(ZooAnimals.LION);
+
+    }
+
+    @Test
+    public void zooSetUp(){
+        zoo.buildNewEnclosure("Pride Rock", 100, Biome.SAVANNAH);
+        zoo.buildNewEnclosure("Arctic Tundra", 100, Biome.ARCTIC);
+        zoo.buildNewEnclosure("The Den", 100, Biome.WOODLAND);
+        zoo.buildNewEnclosure("African Plains", 100, Biome.SAVANNAH);
+        zoo.buildBurgerShop("Bob's Burgers");
+        zoo.buildSodaShack("Burpees");
+        zoo.buyMale(ZooAnimals.LION);
+        zoo.buyMale(ZooAnimals.GAZELLE);
+        zoo.buyFemale(ZooAnimals.GAZELLE);
+    }
+
 
 }

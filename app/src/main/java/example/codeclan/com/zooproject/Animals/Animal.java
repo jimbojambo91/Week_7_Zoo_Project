@@ -15,7 +15,6 @@ import example.codeclan.com.zooproject.Poop;
  */
 
 public abstract class Animal implements Edible, Serializable {
-    private int id;
     private String name;
     private FoodType foodType;
     private int nutritionalValue;
@@ -31,10 +30,11 @@ public abstract class Animal implements Edible, Serializable {
     private int preferredSpace;
     private ZooFood preferredFood;
     private int strength;
+    private double price;
 
     public Animal(String name, FoodType foodType, char gender, boolean mature,
                   Biome preferredBiome, boolean solitary, int nutritionalValue, int preferredSpace,
-                  ZooFood preferredFood, int strength){
+                  ZooFood preferredFood, int strength, double price){
         this.name = name;
         this.foodType = foodType;
         this.nutritionalValue = nutritionalValue;
@@ -49,17 +49,8 @@ public abstract class Animal implements Edible, Serializable {
         this.preferredSpace = preferredSpace;
         this.preferredFood = preferredFood;
         this.strength = strength;
+        this.price = price;
 
-    }
-
-    // getting ID
-    public int getID(){
-        return this.id;
-    }
-
-    // setting id
-    public void setID(int id){
-        this.id = id;
     }
 
     public final String getName() {

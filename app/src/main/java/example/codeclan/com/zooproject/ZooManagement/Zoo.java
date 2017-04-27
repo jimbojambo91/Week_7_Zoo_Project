@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
 
+import example.codeclan.com.zooproject.Animals.Animal;
+import example.codeclan.com.zooproject.Animals.AnimalFactory;
+import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Biome;
 import example.codeclan.com.zooproject.People.Entertainer;
 import example.codeclan.com.zooproject.People.PersonFactory;
@@ -27,6 +30,8 @@ public class Zoo {
     private ArrayList<Visitor> entrancePath;
     private ArrayList<Visitor> exitPath;
     private ArrayList<String> log;
+    private ArrayList<Animal> temporaryStorage;
+    private HashMap<ZooAnimals, Double> animalPriceList;
 
     public Zoo(String name, double zooFunds){
         this.name = name;
@@ -38,6 +43,14 @@ public class Zoo {
         this.entrancePath = new ArrayList<Visitor>();
         this.exitPath = new ArrayList<Visitor>();
         this.log = new ArrayList<String>();
+        this.temporaryStorage = new ArrayList<Animal>();
+        this.animalPriceList = new HashMap<>();
+        fillPriceList();
+    }
+
+    private void fillPriceList() {
+        animalPriceList.put(ZooAnimals.LION, 2000.00);
+        animalPriceList.put(ZooAnimals.GAZELLE, 500.00);
     }
 
 
@@ -83,6 +96,18 @@ public class Zoo {
 
     public void removeVisitor(Visitor visitor) {
         visitors.remove(visitor);
+    }
+
+    public ArrayList<Animal> getTemporaryStorage(){
+        return temporaryStorage;
+    }
+
+    public void addAnimalToTemporaryStorage(Animal animal) {
+        temporaryStorage.add(animal);
+    }
+
+    public void removeAnimalToTemporaryStorage(Animal animal) {
+        temporaryStorage.remove(animal);
     }
 
     protected void addToLog(String message) {
@@ -178,6 +203,8 @@ public class Zoo {
         else return false;
 
     }
+
+
 
     public void buildNewEnclosure(String name, int plotSize, Biome Biome){
         if(checkAdequateFunds(plotSize*50)){
@@ -343,6 +370,52 @@ public class Zoo {
         }
         return null;
 
+    }
+
+
+    public void buyMale(ZooAnimals animal) {
+        double price = animalPriceList.get(animal);
+        if(checkAdequateFunds(price)){
+            String count = animalCountType(animal).toString();
+            String name = animal.toString() + count;
+            boolean mature = true;
+            char gender = 'M';
+            addAnimalToTemporaryStorage(AnimalFactory.CreateAnimal(animal, name, gender, mature, price));
+        }
+    }
+
+    public void buyFemale(ZooAnimals animal) {
+        double price = animalPriceList.get(animal);
+        if(checkAdequateFunds(price)){
+            String count = animalCountType(animal).toString();
+            String name = animal.toString() + count;
+            boolean mature = true;
+            char gender = 'F';
+            addAnimalToTemporaryStorage(AnimalFactory.CreateAnimal(animal, name, gender, mature, price));
+        }
+    }
+
+    private Integer animalCountType(ZooAnimals seachAnimal) {
+        Integer counter = 1;
+        for(Enclosure enclosure: enclosures){
+            for(Animal animal: enclosure.getAnimals()){
+                if(animal.getClass().getSimpleName().toString().equals(seachAnimal.toString())){
+                    counter ++ ;
+                }
+            }
+
+        }
+        return counter;
+    }
+
+
+    public Enclosure getEnclosureByName(String name) {
+        for(Enclosure enclosure : enclosures){
+            if(enclosure.getName().equals(name)){
+                return enclosure;
+            }
+        }
+        return null;
     }
 }
 

@@ -10,8 +10,12 @@ import example.codeclan.com.zooproject.Food.FoodType;
 
 public class Gazelle extends Herbivore{
 
-    public Gazelle(String name, FoodType foodType, char gender, boolean mature, boolean solitary) {
-        super(name, foodType, gender, mature, Biome.SAVANNAH, solitary, 30, 10, ZooFood.GRASS, 25);
+    public Gazelle(String name, FoodType foodType, int nutritionalValue,  char gender, boolean mature,
+                   Biome preferredBiome, boolean solitary, int hunger, int happiness, int preferredSpace,
+                   ZooFood preferredFood, int strength, double price)  {
+        super(name, foodType, gender, mature, preferredBiome, solitary, nutritionalValue,
+                preferredSpace, preferredFood, strength,
+                price);
     }
 
 }

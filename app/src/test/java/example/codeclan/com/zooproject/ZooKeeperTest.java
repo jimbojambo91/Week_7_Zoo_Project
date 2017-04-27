@@ -3,10 +3,13 @@ package example.codeclan.com.zooproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.AnimalFactory;
+import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.ZooKeeper;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.ZooManagement.ZooAnimals;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -24,7 +27,7 @@ public class ZooKeeperTest {
     public void before(){
         zooKeeper = PersonFactory.getRandomZooKeeper();
         enclosure = new Enclosure("Lion House", 50, Biome.SAVANNAH);
-        lion = new Lion("Harold", 'M', true, false);
+        lion = (Lion) AnimalFactory.CreateAnimal(ZooAnimals.LION, "Harold", 'M', true, 500 );
     }
 
     @Test

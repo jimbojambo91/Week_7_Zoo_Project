@@ -11,9 +11,12 @@ import example.codeclan.com.zooproject.Food.FoodType;
 
 public class Lion extends Carnivore implements Edible {
 
-    public Lion(String name, char gender, boolean mature, boolean solitary) {
-        super(name, FoodType.MEAT, gender, mature, Biome.SAVANNAH, solitary, 10, 25,
-                ZooFood.MEATCHUNK, 50);
+    public Lion(String name, FoodType foodType, int nutritionalValue,  char gender, boolean mature,
+                Biome preferredBiome, boolean solitary, int hunger, int happiness, int preferredSpace,
+                ZooFood preferredFood, int strength, double price) {
+        super(name, foodType, gender, mature, preferredBiome, solitary, nutritionalValue,
+                preferredSpace, preferredFood, strength,
+                  price);
     }
 
 }

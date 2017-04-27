@@ -5,11 +5,13 @@ import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
 
+import example.codeclan.com.zooproject.Animals.AnimalFactory;
 import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
 import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.Food.Grass;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.ZooManagement.ZooAnimals;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -26,8 +28,8 @@ public class GazelleTest {
 
     @Before
     public void before(){
-        lion = new Lion("Leo", 'M', true, false);
-        gazelle = new Gazelle("Garry", FoodType.MEAT, 'M', true, false);
+        lion = (Lion) AnimalFactory.CreateAnimal(ZooAnimals.LION, "Leo", 'M', true, 500 );
+        gazelle = (Gazelle) AnimalFactory.CreateAnimal(ZooAnimals.GAZELLE, "Garry", 'M', true, 500 );
         grass = new Grass();
         enclosure = new Enclosure("African Plains", 100, Biome.SAVANNAH);
     }
