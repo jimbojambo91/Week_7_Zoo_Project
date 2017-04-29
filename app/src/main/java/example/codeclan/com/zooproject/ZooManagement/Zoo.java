@@ -162,6 +162,10 @@ public class Zoo {
         addToSalaries(shopWorker, 100.00);
     }
 
+    public double getStaffSalary(Staff staff){
+        return salaries.get(staff);
+    }
+
     public void payStaff() {
         Set<Staff> keys = salaries.keySet();
         for(Staff key : keys ){
@@ -193,6 +197,7 @@ public class Zoo {
     public void sellTicket(Visitor visitor) {
         visitor.amendWallet(-15);
         this.addZooFunds(15);
+        entrancePath.remove(visitor);
         addVisitor(visitor);
     }
 

@@ -34,7 +34,6 @@ public class Carnivore extends Animal {
             String event = getName() + " the " + getClass().getSimpleName().toString() + " ate " + edible.getsEaten();
             addToAnimalLog(event);
         }
-
     }
 
     public Edible hunt() {

@@ -37,7 +37,7 @@ public class LionTest {
 
     @Test
     public void lionCanEatGazelle(){
-        lion.eat(gazelle);
+        lion.eat(meat);
         assertEquals(1, lion.bellyCount());
     }
 

@@ -204,6 +204,14 @@ public class ZooTest {
 
     }
 
+    @Test
+    public void canGetStaffSalary(){
+        ZooKeeper zookeeper = PersonFactory.getRandomZooKeeper();
+        zoo.addToSalaries(zookeeper, 100.00);
+        double value = zoo.getStaffSalary(zookeeper);
+        assertEquals(100.00, value);
+    }
+
 
 
 
