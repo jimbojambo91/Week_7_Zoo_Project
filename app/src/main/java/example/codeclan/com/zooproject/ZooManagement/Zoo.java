@@ -422,5 +422,21 @@ public class Zoo {
         }
         return null;
     }
+
+    public void placeShopWorkerInShop(BurgerShop burgerShop) {
+        Set<Staff> keys = salaries.keySet();
+        for(Staff key : keys ){
+            if(key.getClass().getSimpleName().toString().equals("ShopWorker")){
+                if (!key.hasCurrentWorkPlace()){
+                    ShopWorker worker = (ShopWorker) key;
+                    burgerShop.addShopWorker(worker);
+                    break;
+
+                }
+            }
+
+        }
+    }
+
 }
 

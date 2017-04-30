@@ -14,7 +14,7 @@ public abstract class Shop {
     private String name;
     private int shopFunds;
     private boolean open;
-    private ShopWorker[] staff;
+    private ArrayList<ShopWorker> staff;
     private ArrayList<Visitor> queue;
     private double buildPrice;
     private double stockPrice;
@@ -25,7 +25,7 @@ public abstract class Shop {
         this.name = name;
         this.shopFunds = 500;
         this.open = false;
-        this.staff = new ShopWorker[1];
+        this.staff = new ArrayList<>();
         this.queue = new ArrayList<>();
         this.buildPrice = buildPrice;
         this.stockPrice = stockPrice;
@@ -90,6 +90,21 @@ public abstract class Shop {
 
     public boolean getOpen() {
         return open;
+    }
+
+    public void addShopWorker(ShopWorker shopWorker) {
+        if (staff.size() <1){
+            staff.add(shopWorker);
+            shopWorker.setCurrentWorkPlace(this);
+        }
+    }
+
+    public void removeShopWorker(){
+        staff.remove(0);
+    }
+
+    public int getStaffLength() {
+        return staff.size();
     }
 }
 

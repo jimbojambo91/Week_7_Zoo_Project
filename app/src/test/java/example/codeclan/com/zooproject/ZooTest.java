@@ -235,5 +235,12 @@ public class ZooTest {
         zoo.buyFemale(ZooAnimals.GAZELLE);
     }
 
+    @Test
+    public void zooCanPlaceWorkerInShop(){
+        zoo.hireShopWorker();
+        zoo.placeShopWorkerInShop(burgerShop);
+        assertEquals(1, burgerShop.getStaffLength());
+    }
+
 
 }

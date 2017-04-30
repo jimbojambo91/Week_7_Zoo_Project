@@ -14,4 +14,7 @@ public abstract class Staff extends Person {
     }
 
 
+    public boolean hasCurrentWorkPlace() {
+        return true;
+    }
 }
