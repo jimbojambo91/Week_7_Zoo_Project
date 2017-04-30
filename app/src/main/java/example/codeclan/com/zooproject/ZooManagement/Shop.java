@@ -106,6 +106,13 @@ public abstract class Shop {
     public int getStaffLength() {
         return staff.size();
     }
+
+    public void checkStatus() {
+        if(getStaffLength() == 0){
+            open = false;
+        }
+        else open = true;
+    }
 }
 
 

@@ -20,7 +20,7 @@ public class BurgerShop extends Shop implements Eatable {
         Burger burger = (Burger) EdibleFactory.createEdible(ZooFood.BURGER);
         addToLog("Sold Burger to " + visitor.getName());
         visitor.addToItems(burger);
-        visitor.amendWallet(getStockPrice());
+        visitor.amendWallet(-getStockPrice());
         addShopFunds(getStockPrice());
         serveFirstPersonInQueue();
     }

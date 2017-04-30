@@ -191,6 +191,7 @@ public class Zoo {
         Visitor visitor = getFirstInZooQueue();
         visitor.amendWallet(-15);
         this.addZooFunds(15);
+        entrancePath.remove(visitor);
         addVisitor(visitor);
     }
 
@@ -295,6 +296,7 @@ public class Zoo {
 
     public void updateShops(){
         for(Shop shop : shops){
+            shop.checkStatus();
             if(shop.getQueueLength() != 0){
                 shop.sell(shop.getFirstPerson());
             }
@@ -423,13 +425,13 @@ public class Zoo {
         return null;
     }
 
-    public void placeShopWorkerInShop(BurgerShop burgerShop) {
+    public void placeShopWorkerInShop(Shop shop) {
         Set<Staff> keys = salaries.keySet();
         for(Staff key : keys ){
             if(key.getClass().getSimpleName().toString().equals("ShopWorker")){
                 if (!key.hasCurrentWorkPlace()){
                     ShopWorker worker = (ShopWorker) key;
-                    burgerShop.addShopWorker(worker);
+                    shop.addShopWorker(worker);
                     break;
 
                 }
@@ -438,5 +440,13 @@ public class Zoo {
         }
     }
 
+    public Shop findShopByName(String name) {
+        for(Shop shop : shops){
+            if(shop.getName().equals(name)){
+                return shop;
+            }
+        }
+        return null;
+    }
 }
 

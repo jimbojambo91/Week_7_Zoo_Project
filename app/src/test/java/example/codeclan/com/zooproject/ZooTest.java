@@ -11,6 +11,7 @@ import example.codeclan.com.zooproject.People.Visitor;
 import example.codeclan.com.zooproject.People.ZooKeeper;
 import example.codeclan.com.zooproject.ZooManagement.BurgerShop;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
+import example.codeclan.com.zooproject.ZooManagement.Shop;
 import example.codeclan.com.zooproject.ZooManagement.Zoo;
 import example.codeclan.com.zooproject.ZooManagement.ZooAnimals;
 
@@ -74,6 +75,13 @@ public class ZooTest {
         String enclosureName = "Pride Rock";
         Enclosure result = zoo.findEnclosureByName(enclosureName);
         assertEquals(enclosure, result);
+    }
+
+    @Test
+    public void findShopByNameTest(){
+        zoo.addShop(burgerShop);
+        Shop result = zoo.findShopByName("Bob's Burgers");
+        assertEquals(burgerShop, result);
     }
 
     @Test
@@ -150,9 +158,12 @@ public class ZooTest {
     @Test
     public void visitorWillGoBuyFoodIfHungry(){
         zoo.buildBurgerShop("Bob's Burgers");
+        zoo.hireShopWorker();
+        zoo.placeShopWorkerInShop(zoo.findShopByName("Bob's Burgers"));
         zoo.sellTicket(visitor);
         visitor.addToHunger(-60);
-        zoo.updateVisitors();
+        zoo.update();
+        zoo.update();
     }
 
     @Test
