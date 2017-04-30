@@ -84,5 +84,10 @@ public class VisitorTest {
         assertEquals(65, result);
     }
 
+    @Test
+    public void canEatEdibleItem(){
+
+    }
+
 
 }

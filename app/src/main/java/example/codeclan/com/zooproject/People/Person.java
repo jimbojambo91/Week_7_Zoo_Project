@@ -6,6 +6,7 @@ import example.codeclan.com.zooproject.Edible;
 import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.ZooManagement.Sellable;
+import example.codeclan.com.zooproject.ZooManagement.SellableType;
 
 /**
  * Created by user on 25/04/2017.
@@ -116,6 +117,15 @@ public abstract class Person implements Edible {
 
     public void addToItems(Sellable sellable) {
         items.add(sellable);
+    }
+
+    public boolean checkEdibleItem() {
+        for(Sellable item : items){
+            if(item.getSellableType() == SellableType.FOOD ){
+                return true;
+            }
+        }
+        return false;
     }
 }
 

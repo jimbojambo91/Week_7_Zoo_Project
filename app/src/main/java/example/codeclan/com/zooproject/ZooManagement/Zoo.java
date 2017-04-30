@@ -247,6 +247,9 @@ public class Zoo {
                 break;
             }
             if (visitor.getHunger() < 20) {
+                if(visitor.checkEdibleItem()){
+                    visitor.eatFirstEdible();
+                }
                 if(checkOpenEatable()){
                     visitor.visit(this.getRandomEatable());
                     break;

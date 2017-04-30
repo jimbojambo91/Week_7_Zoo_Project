@@ -7,4 +7,5 @@ import example.codeclan.com.zooproject.People.Visitor;
  */
 
 public interface Sellable {
+    SellableType getSellableType();
 }
