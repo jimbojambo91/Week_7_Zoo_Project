@@ -250,7 +250,7 @@ public class Zoo {
                 if(visitor.checkEdibleItem()){
                     visitor.eatFirstEdible();
                 }
-                if(checkOpenEatable()){
+                else if(checkOpenEatable()){
                     visitor.visit(this.getRandomEatable());
                     break;
                 }

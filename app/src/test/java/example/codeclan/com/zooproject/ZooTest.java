@@ -6,6 +6,7 @@ import org.junit.Test;
 import example.codeclan.com.zooproject.Animals.AnimalFactory;
 import example.codeclan.com.zooproject.Animals.Gazelle;
 import example.codeclan.com.zooproject.Animals.Lion;
+import example.codeclan.com.zooproject.Food.Burger;
 import example.codeclan.com.zooproject.People.PersonFactory;
 import example.codeclan.com.zooproject.People.Visitor;
 import example.codeclan.com.zooproject.People.ZooKeeper;
@@ -251,6 +252,20 @@ public class ZooTest {
         zoo.hireShopWorker();
         zoo.placeShopWorkerInShop(burgerShop);
         assertEquals(1, burgerShop.getStaffLength());
+    }
+
+    @Test
+    public void visitorComesWithUmbrella(){
+        zoo.buildBurgerShop("check");
+        zoo.hireShopWorker();
+        Shop shop = zoo.findShopByName("check");
+        zoo.placeShopWorkerInShop(shop);
+        Burger burger = new Burger();
+        visitor.addToItems(burger);
+        visitor.addToHunger(-60);
+        zoo.addVisitor(visitor);
+        zoo.update();
+
     }
 
 

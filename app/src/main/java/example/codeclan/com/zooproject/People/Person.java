@@ -119,6 +119,10 @@ public abstract class Person implements Edible {
         items.add(sellable);
     }
 
+    public void addToBelly(Edible edible) {
+        belly.add(edible);
+    }
+
     public boolean checkEdibleItem() {
         for(Sellable item : items){
             if(item.getSellableType() == SellableType.FOOD ){
@@ -126,6 +130,10 @@ public abstract class Person implements Edible {
             }
         }
         return false;
+    }
+
+    public void removeItem(Sellable sellable){
+        items.remove(sellable);
     }
 }
 

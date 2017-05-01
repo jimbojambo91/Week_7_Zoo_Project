@@ -6,6 +6,7 @@ import example.codeclan.com.zooproject.Food.FoodType;
 import example.codeclan.com.zooproject.ZooManagement.Eatable;
 import example.codeclan.com.zooproject.ZooManagement.Enclosure;
 import example.codeclan.com.zooproject.ZooManagement.Sellable;
+import example.codeclan.com.zooproject.ZooManagement.SellableType;
 import example.codeclan.com.zooproject.ZooManagement.Shop;
 
 /**
@@ -89,4 +90,17 @@ public class Visitor extends Person{
         }
 
     }
+
+    public void eatFirstEdible() {
+        for(Sellable item : getItems()){
+            if(item.getSellableType() == SellableType.FOOD){
+                Edible edibleItem = (Edible) item;
+                this.addToHunger(edibleItem.getNutritionalValue());
+                this.addToBelly(edibleItem);
+                this.removeItem(item);
+                break;
+            }
+        }
+    }
+
 }
