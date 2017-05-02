@@ -95,6 +95,7 @@ public class Visitor extends Person{
         for(Sellable item : getItems()){
             if(item.getSellableType() == SellableType.FOOD){
                 Edible edibleItem = (Edible) item;
+                addToLog("Ate " + edibleItem.getsEaten());
                 this.addToHunger(edibleItem.getNutritionalValue());
                 this.addToBelly(edibleItem);
                 this.removeItem(item);
@@ -103,4 +104,16 @@ public class Visitor extends Person{
         }
     }
 
+    public void DrinkFirstEdible() {
+        for(Sellable item : getItems()){
+            if(item.getSellableType() == SellableType.DRINK){
+                Edible edibleItem = (Edible) item;
+                addToLog("Drank " + edibleItem.getsEaten());
+                this.addToThirst(edibleItem.getNutritionalValue());
+                this.addToBelly(edibleItem);
+                this.removeItem(item);
+                break;
+            }
+        }
+    }
 }

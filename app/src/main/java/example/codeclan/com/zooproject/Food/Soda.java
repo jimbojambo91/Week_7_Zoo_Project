@@ -9,7 +9,7 @@ import example.codeclan.com.zooproject.ZooManagement.SellableType;
  * Created by user on 26/04/2017.
  */
 
-public class Soda implements Drinkable, Sellable {
+public class Soda implements Drinkable, Edible, Sellable {
 
     private FoodType foodType;
     private int nutritionalValue;

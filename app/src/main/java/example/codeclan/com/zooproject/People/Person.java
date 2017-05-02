@@ -135,6 +135,15 @@ public abstract class Person implements Edible {
     public void removeItem(Sellable sellable){
         items.remove(sellable);
     }
+
+    public boolean checkDrinkableItem() {
+        for(Sellable item : items){
+            if(item.getSellableType() == SellableType.DRINK ){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

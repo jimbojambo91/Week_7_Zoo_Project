@@ -259,7 +259,10 @@ public class Zoo {
 
             }
             if (visitor.getThirst() < 20) {
-                if(checkOpenThirstable()){
+                if(visitor.checkDrinkableItem()){
+                    visitor.DrinkFirstEdible();
+                }
+                else if(checkOpenThirstable()){
                     visitor.visit(this.getRandomThirstable());
                     break;
                 }

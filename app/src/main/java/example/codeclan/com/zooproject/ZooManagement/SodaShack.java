@@ -20,7 +20,7 @@ public class SodaShack extends Shop implements Thirstable{
         Soda soda = (Soda) DrinkableFactory.createDrinkable(ZooFood.SODA);
         addToLog("Sold Soda to " + visitor.getName());
         visitor.addToItems(soda);
-        visitor.amendWallet(getStockPrice());
+        visitor.amendWallet(-getStockPrice());
         addShopFunds(getStockPrice());
         serveFirstPersonInQueue();
     }

@@ -170,9 +170,12 @@ public class ZooTest {
     @Test
     public void visitorWillGoBuyDrinkIfThirsty(){
         zoo.buildSodaShack("Burpees");
+        zoo.hireShopWorker();
+        zoo.placeShopWorkerInShop(zoo.findShopByName("Burpees"));
         zoo.sellTicket(visitor);
         visitor.addToThirst(-60);
-        zoo.updateVisitors();
+        zoo.update();
+        zoo.update();
     }
 
     @Test
