@@ -97,6 +97,7 @@ public class Visitor extends Person{
                 Edible edibleItem = (Edible) item;
                 addToLog("Ate " + edibleItem.getsEaten());
                 this.addToHunger(edibleItem.getNutritionalValue());
+                this.addToThirst(-10);
                 this.addToBelly(edibleItem);
                 this.removeItem(item);
                 break;

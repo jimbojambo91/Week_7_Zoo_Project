@@ -249,6 +249,7 @@ public class Zoo {
             if (visitor.getHunger() < 20) {
                 if(visitor.checkEdibleItem()){
                     visitor.eatFirstEdible();
+                    break;
                 }
                 else if(checkOpenEatable()){
                     visitor.visit(this.getRandomEatable());
@@ -261,6 +262,7 @@ public class Zoo {
             if (visitor.getThirst() < 20) {
                 if(visitor.checkDrinkableItem()){
                     visitor.DrinkFirstEdible();
+                    break;
                 }
                 else if(checkOpenThirstable()){
                     visitor.visit(this.getRandomThirstable());
@@ -268,7 +270,6 @@ public class Zoo {
                 }
                 visitor.addToHappiness(-20);
                 addToLog("Visitors are Thirsty!");
-
             }
             if(getEnclosureCount() == 0){
                 visitor.leave();
